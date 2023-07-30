@@ -1,0 +1,9 @@
+{
+	"name": "azdatafactoryannt",
+	"location": "westus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "68fb043b-d46d-4f74-aba9-bb03d01c1396",
+		"tenantId": "0bc1cb12-503e-4ee3-942e-6bd653cf2458"
+	}
+}

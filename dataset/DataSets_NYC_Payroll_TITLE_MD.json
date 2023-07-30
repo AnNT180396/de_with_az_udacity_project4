@@ -1,0 +1,29 @@
+{
+	"name": "DataSets_NYC_Payroll_TITLE_MD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_AzureSynapseAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Datasets For Synapse Analytics"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "TitleCode",
+				"type": "varchar"
+			},
+			{
+				"name": "TitleDescription",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "NYC_Payroll_TITLE_MD"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

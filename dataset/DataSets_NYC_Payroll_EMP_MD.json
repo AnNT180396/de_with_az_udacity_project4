@@ -1,0 +1,33 @@
+{
+	"name": "DataSets_NYC_Payroll_EMP_MD",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_AzureSynapseAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Datasets For Synapse Analytics"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "EmployeeID",
+				"type": "varchar"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "NYC_Payroll_EMP_MD"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

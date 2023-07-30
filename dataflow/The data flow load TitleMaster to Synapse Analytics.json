@@ -1,0 +1,62 @@
+{
+	"name": "The data flow load TitleMaster to Synapse Analytics",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "TITLEMASTER_CSV",
+						"type": "DatasetReference"
+					},
+					"name": "TITLEMASTERDataSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DataSets_NYC_Payroll_TITLE_MD",
+						"type": "DatasetReference"
+					},
+					"name": "DataSetsNYCPayrollTITLEMD",
+					"rejectedDataLinkedService": {
+						"referenceName": "LinkedService_AzureDataLakeStorage",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          TitleCode as string,",
+				"          TitleDescription as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> TITLEMASTERDataSource",
+				"TITLEMASTERDataSource sink(allowSchemaDrift: true,",
+				"     validateSchema: true,",
+				"     input(",
+				"          TitleCode as string,",
+				"          TitleDescription as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     staged: true,",
+				"     dateFormat:'dd/MM/yyyy',",
+				"     timestampFormat:'MM/dd/yyyy HH:mm:ss',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     saveOrder: 1,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          TitleCode,",
+				"          TitleDescription",
+				"     )) ~> DataSetsNYCPayrollTITLEMD"
+			]
+		}
+	}
+}

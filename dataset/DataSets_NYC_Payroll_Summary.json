@@ -1,0 +1,35 @@
+{
+	"name": "DataSets_NYC_Payroll_Summary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedService_AzureSynapseAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Datasets For Synapse Analytics"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "FiscalYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "AgencyName",
+				"type": "varchar"
+			},
+			{
+				"name": "TotalPaid",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "NYC_Payroll_Summary"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
